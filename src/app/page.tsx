@@ -56,9 +56,9 @@ export default function Home() {
             <Link href="/week">
               <Flex
                 align="center"
-                className="text-blue-600"
+                className="text-blue-600 hover:underline"
                 justify="end"
-                gap="2"
+                gap="1"
               >
                 <Text size="2">See More</Text>
                 <ChevronRight size={13} />

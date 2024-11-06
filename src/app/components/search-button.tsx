@@ -13,13 +13,10 @@ export default function SearchButton() {
     <motion.div
       className="bg-zinc-100 border-[1px] border-solid border-zinc-200 rounded-md flex flex-row items-center justify-center"
       animate={{ width: isExpanded ? '400px' : 'fit-content' }}
-      transition={{
-        delay: 0.1,
-      }}
     >
       <button
         onClick={() => setIsExpanded((expanded) => !expanded)}
-        className="px-2 py-2 rounded-md"
+        className="px-2.5 py-2.5 rounded-md"
       >
         <Search size={12} />
       </button>
@@ -28,8 +25,7 @@ export default function SearchButton() {
           display: isExpanded ? 'block' : 'none',
           width: isExpanded ? '100%' : '0%',
         }}
-        transition={{ duration: 0.2 }}
-        className="bg-transparent text-md outline-none px-2 py-[0.5px] rounded-full"
+        className="bg-transparent text-sm outline-none px-2.5 py-[1px] rounded-full"
         placeholder="Find A Comic"
       />
     </motion.div>

@@ -5,3 +5,16 @@
 button {
 	outline: none;
 }
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+::-webkit-scrollbar {
+	width: 0;
+	background: transparent;
+}

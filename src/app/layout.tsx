@@ -35,7 +35,7 @@ export default function RootLayout({
             align="center"
             justify="between"
           >
-            <Flex gap="4">
+            <Flex gap="4" align="center">
               <Link href="/">
                 <Text size="6" className="font-virus">
                   GetComics
