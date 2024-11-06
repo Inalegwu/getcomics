@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 
 const bricolage = Bricolage_Grotesque({
   variable: '--font-bricolage',
+  subsets: ['latin'],
 });
 const virus = local({
   src: './assets/fonts/virus.ttf',
