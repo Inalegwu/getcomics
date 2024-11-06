@@ -1,101 +1,96 @@
-import Image from "next/image";
+'use client';
+import { DropdownMenu, Flex, Text, Tooltip } from '@radix-ui/themes';
+import { ChevronRight, Sliders } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import absolute from './assets/images/a0001_absolute-superman_cover52.jpg';
+import dc from './assets/images/dc.png';
+import marvel from './assets/images/marvel.png';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  // const isExpanded = useObservable(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+  return (
+    <Flex
+      direction="column"
+      className="w-full h-screen overflow-y-scroll bg-zinc-50/60"
+    >
+      <Flex className="px-3 py-3" gap="6" direction="column">
+        {/* filters */}
+        <Flex align="center" justify="start" gap="2">
+          <Tooltip content="Filter Comics">
+            <DropdownMenu.Root>
+              <DropdownMenu.Trigger>
+                <button className="bg-zinc-100 shadow-sm border-[1px] border-solid border-zinc-200 px-2 py-2 rounded-md text-zinc-600">
+                  <Sliders size={13} />
+                </button>
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content size="1" variant="soft">
+                <DropdownMenu.Item className="cursor-pointer">
+                  <Flex align="center" justify="start" gap="2">
+                    <Image alt="dc-logo" width={16} height={16} src={dc} />
+                    <Text size="1">DC Comics</Text>
+                  </Flex>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className="cursor-pointer">
+                  <Flex align="center" justify="start" gap="2">
+                    <Image
+                      alt="marvel-logo"
+                      width={16}
+                      height={16}
+                      src={marvel}
+                    />
+                    <Text size="1">Marvel Comics</Text>
+                  </Flex>
+                </DropdownMenu.Item>
+              </DropdownMenu.Content>
+            </DropdownMenu.Root>
+          </Tooltip>
+        </Flex>
+        {/* new this week */}
+        <Flex direction="column" gap="3">
+          <Flex align="center" justify="between">
+            <Text size="7" weight="bold">
+              New This Week
+            </Text>
+            <Link href="/week">
+              <Flex
+                align="center"
+                className="text-blue-600"
+                justify="end"
+                gap="2"
+              >
+                <Text size="2">See More</Text>
+                <ChevronRight size={13} />
+              </Flex>
+            </Link>
+          </Flex>
+          <Flex className="overflow-x-scroll h-80" gap="3" align="center">
+            {new Array(5).fill(0).map((v, idx) => (
+              <Flex
+                direction="column"
+                gap="2"
+                key={idx}
+                className="h-full w-[14%]"
+              >
+                <Image
+                  src={absolute}
+                  alt={`this-week-image-cover-${idx}`}
+                  width={500}
+                  height={400}
+                  className="border-[1px] border-zinc-200 border-solid rounded-md w-full h-full"
+                />
+                <Flex direction="column" className="cursor-pointer">
+                  <Text size="2">Absolute Superman</Text>
+                  <Text size="1" color="gray">
+                    3 hours ago
+                  </Text>
+                </Flex>
+              </Flex>
+            ))}
+          </Flex>
+        </Flex>
+      </Flex>
+    </Flex>
   );
 }
