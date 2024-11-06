@@ -36,7 +36,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${bricolage.variable} ${virus.variable} antialiased`}>
+      <body
+        className={`${bricolage.variable} ${virus.variable} antialiased bg-zinc-50/60`}
+      >
         <Theme accentColor="gray" className="font-bricolage outline-none">
           {/* page header */}
           <Flex
@@ -84,15 +86,16 @@ export default function RootLayout({
               <Tooltip content="News & Info">
                 <Link
                   href="/news-info"
-                  className="bg-zinc-100 shadow-sm border-[1px] border-solid border-zinc-200 px-2.5 py-2.5 rounded-md text-zinc-600"
+                  className="bg-zinc-100 relative shadow-sm border-[1px] border-solid border-zinc-200 px-2.5 py-2.5 rounded-md text-zinc-600"
                 >
+                  <div className="absolute z-10 -right-1 -top-[5px] bg-red-600 p-[5px] rounded-full" />
                   <Megaphone size={12} />
                 </Link>
               </Tooltip>
               <UserButton />
             </Flex>
           </Flex>
-          <Flex className="py-[3rem] bg-zinc-50/60">{children}</Flex>
+          <Flex className="bg-zinc-50/60">{children}</Flex>
         </Theme>
       </body>
     </html>

@@ -1,7 +1,8 @@
-'use client';
-import absolute from '@/app/assets/images/a0001_absolute-superman_cover52.jpg';
+import cowboy from '@/app/assets/images/381166574_11479456.png';
+import image from '@/app/assets/images/cdnlogo.com_image-comics.svg';
 import dc from '@/app/assets/images/dc.png';
 import marvel from '@/app/assets/images/marvel.png';
+import { Issue } from '@/app/components';
 import { DropdownMenu, Flex, Text, Tooltip } from '@radix-ui/themes';
 import { ArrowDownAZ, ChevronRight, ChevronsDown, Sliders } from 'lucide-react';
 import Image from 'next/image';
@@ -30,21 +31,51 @@ export default function Home() {
               </DropdownMenu.Trigger>
               <DropdownMenu.Content size="1" variant="soft">
                 <DropdownMenu.Item className="cursor-pointer">
-                  <Flex align="center" justify="start" gap="2">
-                    <Image alt="dc-logo" width={16} height={16} src={dc} />
-                    <Text size="1">DC Comics</Text>
-                  </Flex>
+                  <Link href="/categories/dc">
+                    <Flex align="center" justify="start" gap="2">
+                      <Image alt="dc-logo" width={16} height={16} src={dc} />
+                      <Text size="1">DC Comics</Text>
+                    </Flex>
+                  </Link>
                 </DropdownMenu.Item>
                 <DropdownMenu.Item className="cursor-pointer">
-                  <Flex align="center" justify="start" gap="2">
-                    <Image
-                      alt="marvel-logo"
-                      width={16}
-                      height={16}
-                      src={marvel}
-                    />
-                    <Text size="1">Marvel Comics</Text>
-                  </Flex>
+                  <Link href="/categories/marvel">
+                    <Flex align="center" justify="start" gap="2">
+                      <Image
+                        alt="marvel-logo"
+                        width={16}
+                        height={16}
+                        src={marvel}
+                      />
+                      <Text size="1">Marvel Comics</Text>
+                    </Flex>
+                  </Link>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className="cursor-pointer">
+                  <Link href="/categories/image">
+                    <Flex align="center" justify="start" gap="2">
+                      <Image
+                        alt="image-logo"
+                        width={16}
+                        height={16}
+                        src={image}
+                      />
+                      <Text size="1">Image Comics</Text>
+                    </Flex>
+                  </Link>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className="cursor-pointer">
+                  <Link href="/categories/indie">
+                    <Flex align="center" justify="start" gap="2">
+                      <Image
+                        alt="indie-logo"
+                        width={20}
+                        height={20}
+                        src={cowboy}
+                      />
+                      <Text size="1">Indie +</Text>
+                    </Flex>
+                  </Link>
                 </DropdownMenu.Item>
               </DropdownMenu.Content>
             </DropdownMenu.Root>
@@ -93,27 +124,8 @@ export default function Home() {
               gap="3"
             >
               {new Array(5).fill(0).map((v, idx) => (
-                <Flex
-                  direction="column"
-                  gap="2"
-                  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                  key={idx}
-                  className="h-[500px] w-full md:w-[14%] lg:w-[14%] md:h-full lg:h-full"
-                >
-                  <Image
-                    src={absolute}
-                    alt={`this-week-image-cover-${idx}`}
-                    width={500}
-                    height={400}
-                    className="border-[1px] border-zinc-200 border-solid rounded-md w-full h-full"
-                  />
-                  <Flex direction="column" className="cursor-pointer">
-                    <Text size="2">Absolute Superman</Text>
-                    <Text size="1" color="gray">
-                      3 hours ago
-                    </Text>
-                  </Flex>
-                </Flex>
+                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                <Issue key={idx} issue={{ title: 'Absolute Superman' }} />
               ))}
             </Flex>
           </Flex>
