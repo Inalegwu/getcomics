@@ -88,14 +88,17 @@ export default function Home() {
                 </Flex>
               </Link>
             </Flex>
-            <Flex className="overflow-x-scroll h-80" gap="3" align="center">
+            <Flex
+              className="overflow-x-scroll space-y-6 h-full md:space-y-0 lg:space-y-0 md:h-80 lg:h-80 flex flex-wrap items-start w-full md:flex-row lg:flex-row md:items-center lg:items-center md:w-full lg:w-full"
+              gap="3"
+            >
               {new Array(5).fill(0).map((v, idx) => (
                 <Flex
                   direction="column"
                   gap="2"
                   // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
                   key={idx}
-                  className="h-full w-[14%]"
+                  className="h-[500px] w-full md:w-[14%] lg:w-[14%] md:h-full lg:h-full"
                 >
                   <Image
                     src={absolute}
