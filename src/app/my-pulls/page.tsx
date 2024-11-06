@@ -22,13 +22,17 @@ export default function Page() {
           <button className="px-7 py-1 shadow-sm rounded-md bg-zinc-100 hover:bg-zinc-400/5 border-zinc-200 border-[1px] border-solid">
             <Flex width="100%" align="center" justify="start" gap="2">
               <Image alt="dc-logo" width={16} height={16} src={dc} />
-              <Text>DC</Text>
+              <Text size="2" weight="medium">
+                DC
+              </Text>
             </Flex>
           </button>
           <button className="px-7 py-1 shadow-sm rounded-md bg-zinc-100 hover:bg-zinc-400/5 border-zinc-200 border-[1px] border-solid">
             <Flex width="100%" align="center" justify="start" gap="2">
               <Image alt="dc-logo" width={16} height={16} src={marvel} />
-              <Text>Marvel</Text>
+              <Text size="2" weight="medium">
+                Marvel
+              </Text>
             </Flex>
           </button>
         </Flex>
