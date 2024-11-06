@@ -11,7 +11,7 @@ export default function SearchButton() {
   return (
     <motion.div
       className="bg-zinc-100 border-[1px] border-solid border-zinc-200 rounded-md flex flex-row items-center justify-center"
-      animate={{ width: isExpanded ? '400px' : 'fit-content' }}
+      animate={{ width: isExpanded ? '500px' : 'fit-content' }}
     >
       <button
         onClick={() => setIsExpanded((expanded) => !expanded)}
@@ -24,15 +24,15 @@ export default function SearchButton() {
           display: isExpanded ? 'block' : 'none',
           width: isExpanded ? '100%' : '0%',
         }}
-        className="bg-transparent text-sm outline-none px-2.5 py-[1px] rounded-full"
-        placeholder="Find A Comic"
+        className="bg-transparent text-[0.8rem] outline-none px-2.5 py-[1px] rounded-full"
+        placeholder="Find A Comics,Collections, Writers, Artists and More"
       />
       <motion.button
-        className="px-2.5 py-2.5 rounded-md"
+        className="px-2.5 py-2.5 rounded-md flex items-center justify-center"
         onClick={() => setIsExpanded(false)}
         animate={{
           display: isExpanded ? 'block' : 'none',
-          width: isExpanded ? '10%' : '0%',
+          width: isExpanded ? 'fit-content' : '0%',
         }}
       >
         <X size={12} />
