@@ -18,8 +18,10 @@
 		"framer-motion": "^11.11.11",
 		"lucide-react": "^0.454.0",
 		"next": "15.0.2",
+		"next-safe-action": "^7.9.9",
 		"react": "19.0.0-rc-02c0e824-20241028",
-		"react-dom": "19.0.0-rc-02c0e824-20241028"
+		"react-dom": "19.0.0-rc-02c0e824-20241028",
+		"zod": "^3.23.8"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",

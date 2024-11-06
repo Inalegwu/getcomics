@@ -18,7 +18,7 @@ export default function Home() {
         {/* filters */}
         <Flex
           align="center"
-          className="fixed w-full px-3 py-3 mt-[.6rem] backdrop-blur-lg bg-slate-50/30 border-y-solid border-y-[1px] border-y-zinc-200"
+          className="fixed w-full px-3 py-3 mt-[3.5rem] backdrop-blur-lg bg-slate-50/30 border-y-solid border-y-[1px] border-y-zinc-200"
           justify="start"
           gap="2"
         >
@@ -101,7 +101,7 @@ export default function Home() {
           </Tooltip>
         </Flex>
         {/* new this week */}
-        <Flex direction="column" className="px-3 py-[7rem]">
+        <Flex direction="column" className="px-3 py-[8rem]">
           <Flex direction="column" gap="3">
             <Flex align="center" justify="between">
               <Text size="7" weight="bold">
