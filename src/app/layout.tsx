@@ -1,7 +1,15 @@
 import { SearchButton, UserButton } from '@/app/components';
-import { Flex, Link, Text, Theme, Tooltip } from '@radix-ui/themes';
+import {
+  Button,
+  Dialog,
+  Flex,
+  Link,
+  Text,
+  Theme,
+  Tooltip,
+} from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
-import { Megaphone } from 'lucide-react';
+import { DownloadCloud, Megaphone } from 'lucide-react';
 import type { Metadata } from 'next';
 import { Bricolage_Grotesque } from 'next/font/google';
 import local from 'next/font/local';
@@ -44,6 +52,34 @@ export default function RootLayout({
               <SearchButton />
             </Flex>
             <Flex align="center" justify="end" gap="2">
+              <Tooltip content="Get Vision">
+                <Dialog.Root>
+                  <Dialog.Trigger>
+                    <button className="bg-zinc-100 shadow-sm border-[1px] border-solid border-zinc-200 px-2.5 py-2.5 rounded-md text-zinc-600">
+                      <DownloadCloud size={12} />
+                    </button>
+                  </Dialog.Trigger>
+                  <Dialog.Content>
+                    <Dialog.Title size="7">Get Vision</Dialog.Title>
+                    <Flex direction="column" gap="4">
+                      <Text size="4">
+                        Download Vision Comic Reader to read your comics on your
+                        device and offline
+                      </Text>
+                      <Button
+                        className="cursor-pointer"
+                        size="2"
+                        variant="surface"
+                      >
+                        <Flex align="center" justify="center" gap="2">
+                          <Text>Download</Text>
+                          <DownloadCloud size={13} />
+                        </Flex>
+                      </Button>
+                    </Flex>
+                  </Dialog.Content>
+                </Dialog.Root>
+              </Tooltip>
               <Tooltip content="News & Info">
                 <Link
                   href="/news-info"
