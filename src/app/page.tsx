@@ -71,7 +71,7 @@ export default function Home() {
         </Flex>
         {/* new this week */}
         <Flex direction="column" className="px-3 py-[7rem]">
-          <Flex className="" direction="column" gap="3">
+          <Flex direction="column" gap="3">
             <Flex align="center" justify="between">
               <Text size="7" weight="bold">
                 New This Week
