@@ -1,11 +1,11 @@
 'use client';
+import absolute from '@/app/assets/images/a0001_absolute-superman_cover52.jpg';
+import dc from '@/app/assets/images/dc.png';
+import marvel from '@/app/assets/images/marvel.png';
 import { DropdownMenu, Flex, Text, Tooltip } from '@radix-ui/themes';
 import { ChevronRight, Sliders } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import absolute from './assets/images/a0001_absolute-superman_cover52.jpg';
-import dc from './assets/images/dc.png';
-import marvel from './assets/images/marvel.png';
 
 export default function Home() {
   // const isExpanded = useObservable(false);
@@ -70,6 +70,7 @@ export default function Home() {
               <Flex
                 direction="column"
                 gap="2"
+                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
                 key={idx}
                 className="h-full w-[14%]"
               >

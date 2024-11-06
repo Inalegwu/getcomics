@@ -1,7 +1,6 @@
-import { SearchButton, ThemeButton } from '@/app/components';
-import { DropdownMenu, Flex, Link, Text, Theme } from '@radix-ui/themes';
+import { SearchButton, ThemeButton, UserButton } from '@/app/components';
+import { Flex, Link, Text, Theme } from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
-import { User } from 'lucide-react';
 import type { Metadata } from 'next';
 import { Bricolage_Grotesque } from 'next/font/google';
 import local from 'next/font/local';
@@ -28,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${bricolage.variable} ${virus.variable} antialiased`}>
-        <Theme accentColor="gray" className="font-bricolage">
+        <Theme accentColor="gray" className="font-bricolage outline-none">
           {/* page header */}
           <Flex
             className="px-3 py-3 bg-white fixed top-0 left-0 w-full border-b-solid border-b-[1px] border-b-zinc-200"
@@ -45,16 +44,7 @@ export default function RootLayout({
             </Flex>
             <Flex align="center" justify="end" gap="2">
               <ThemeButton />
-              <DropdownMenu.Root>
-                <DropdownMenu.Trigger>
-                  <button className="px-2.5 shadow-sm py-2.5 rounded-md bg-zinc-100 border-zinc-200 border-[1px] border-solid">
-                    <User size={12} />
-                  </button>
-                </DropdownMenu.Trigger>
-                <DropdownMenu.Content size="1" variant="soft">
-                  user menu
-                </DropdownMenu.Content>
-              </DropdownMenu.Root>
+              <UserButton />
             </Flex>
           </Flex>
           <Flex className="py-[4rem] bg-zinc-50/60">{children}</Flex>
