@@ -3,22 +3,25 @@ import absolute from '@/app/assets/images/a0001_absolute-superman_cover52.jpg';
 import dc from '@/app/assets/images/dc.png';
 import marvel from '@/app/assets/images/marvel.png';
 import { DropdownMenu, Flex, Text, Tooltip } from '@radix-ui/themes';
-import { ChevronRight, Sliders } from 'lucide-react';
+import { ArrowDownAZ, ChevronRight, ChevronsDown, Sliders } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Home() {
-  // const isExpanded = useObservable(false);
-
   return (
     <Flex
       direction="column"
       className="w-full h-screen overflow-y-scroll bg-zinc-50/60"
     >
-      <Flex className="px-3 py-3" gap="6" direction="column">
+      <Flex gap="6" direction="column">
         {/* filters */}
-        <Flex align="center" justify="start" gap="2">
-          <Tooltip content="Filter Comics">
+        <Flex
+          align="center"
+          className="fixed w-full px-3 py-3 mt-[.6rem] backdrop-blur-lg bg-slate-50/30 border-y-solid border-y-[1px] border-y-zinc-200"
+          justify="start"
+          gap="2"
+        >
+          <Tooltip content="Publishers">
             <DropdownMenu.Root>
               <DropdownMenu.Trigger>
                 <button className="bg-zinc-100 shadow-sm border-[1px] border-solid border-zinc-200 px-2 py-2 rounded-md text-zinc-600">
@@ -46,49 +49,70 @@ export default function Home() {
               </DropdownMenu.Content>
             </DropdownMenu.Root>
           </Tooltip>
+          <Tooltip content="Sort">
+            <DropdownMenu.Root>
+              <DropdownMenu.Trigger>
+                <button className="bg-zinc-100 shadow-sm border-[1px] border-solid border-zinc-200 px-2 py-2 rounded-md text-zinc-600">
+                  <ArrowDownAZ size={13} />
+                </button>
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Content size="1" variant="soft">
+                todo
+              </DropdownMenu.Content>
+            </DropdownMenu.Root>
+          </Tooltip>
+          <Tooltip content="My Pulls">
+            <button className="bg-zinc-100 shadow-sm border-[1px] border-solid border-zinc-200 px-2 py-2 rounded-md text-zinc-600">
+              <Link href="/my-pulls">
+                <ChevronsDown size={13} />
+              </Link>
+            </button>
+          </Tooltip>
         </Flex>
         {/* new this week */}
-        <Flex direction="column" gap="3">
-          <Flex align="center" justify="between">
-            <Text size="7" weight="bold">
-              New This Week
-            </Text>
-            <Link href="/week">
-              <Flex
-                align="center"
-                className="text-blue-600 hover:underline"
-                justify="end"
-                gap="1"
-              >
-                <Text size="2">See More</Text>
-                <ChevronRight size={13} />
-              </Flex>
-            </Link>
-          </Flex>
-          <Flex className="overflow-x-scroll h-80" gap="3" align="center">
-            {new Array(5).fill(0).map((v, idx) => (
-              <Flex
-                direction="column"
-                gap="2"
-                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                key={idx}
-                className="h-full w-[14%]"
-              >
-                <Image
-                  src={absolute}
-                  alt={`this-week-image-cover-${idx}`}
-                  width={500}
-                  height={400}
-                  className="border-[1px] border-zinc-200 border-solid rounded-md w-full h-full"
-                />
-                <Flex direction="column" className="cursor-pointer">
-                  <Text size="2">Absolute Superman</Text>
-                  <Text size="1" color="gray">
-                    3 hours ago
-                  </Text>
+        <Flex direction="column" className="px-3 py-[7rem]">
+          <Flex className="" direction="column" gap="3">
+            <Flex align="center" justify="between">
+              <Text size="7" weight="bold">
+                New This Week
+              </Text>
+              <Link href="/week">
+                <Flex
+                  align="center"
+                  className="text-blue-500 hover:underline"
+                  justify="end"
+                  gap="1"
+                >
+                  <Text size="2">See More</Text>
+                  <ChevronRight size={13} />
                 </Flex>
-              </Flex>
-            ))}
+              </Link>
+            </Flex>
+            <Flex className="overflow-x-scroll h-80" gap="3" align="center">
+              {new Array(5).fill(0).map((v, idx) => (
+                <Flex
+                  direction="column"
+                  gap="2"
+                  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                  key={idx}
+                  className="h-full w-[14%]"
+                >
+                  <Image
+                    src={absolute}
+                    alt={`this-week-image-cover-${idx}`}
+                    width={500}
+                    height={400}
+                    className="border-[1px] border-zinc-200 border-solid rounded-md w-full h-full"
+                  />
+                  <Flex direction="column" className="cursor-pointer">
+                    <Text size="2">Absolute Superman</Text>
+                    <Text size="1" color="gray">
+                      3 hours ago
+                    </Text>
+                  </Flex>
+                </Flex>
+              ))}
+            </Flex>
           </Flex>
         </Flex>
       </Flex>

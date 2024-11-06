@@ -1,6 +1,7 @@
-import { SearchButton, ThemeButton, UserButton } from '@/app/components';
-import { Flex, Link, Text, Theme } from '@radix-ui/themes';
+import { SearchButton, UserButton } from '@/app/components';
+import { Flex, Link, Text, Theme, Tooltip } from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
+import { Megaphone } from 'lucide-react';
 import type { Metadata } from 'next';
 import { Bricolage_Grotesque } from 'next/font/google';
 import local from 'next/font/local';
@@ -36,18 +37,25 @@ export default function RootLayout({
           >
             <Flex gap="4" align="center">
               <Link href="/">
-                <Text size="6" className="font-virus">
+                <Text size="7" className="font-virus text-blue-500">
                   GetComics
                 </Text>
               </Link>
               <SearchButton />
             </Flex>
             <Flex align="center" justify="end" gap="2">
-              <ThemeButton />
+              <Tooltip content="News & Info">
+                <Link
+                  href="/news-info"
+                  className="bg-zinc-100 shadow-sm border-[1px] border-solid border-zinc-200 px-2.5 py-2.5 rounded-md text-zinc-600"
+                >
+                  <Megaphone size={12} />
+                </Link>
+              </Tooltip>
               <UserButton />
             </Flex>
           </Flex>
-          <Flex className="py-[4rem] bg-zinc-50/60">{children}</Flex>
+          <Flex className="py-[3rem] bg-zinc-50/60">{children}</Flex>
         </Theme>
       </body>
     </html>
