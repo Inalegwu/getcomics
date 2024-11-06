@@ -28,7 +28,11 @@ export default async function Page({
   };
 
   return (
-    <Flex direction="column" gap="4" className="px-3 py-8 w-full h-screen">
+    <Flex
+      direction="column"
+      gap="4"
+      className="px-3 py-[4.5rem] w-full h-screen"
+    >
       <Flex align="center" justify="start" gap="2">
         <Image alt="category-logo" src={dc} width={23} height={23} />
         <Text size="7" weight="bold">
