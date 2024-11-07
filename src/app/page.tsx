@@ -3,12 +3,25 @@ import image from '@/app/assets/images/cdnlogo.com_image-comics.svg';
 import dc from '@/app/assets/images/dc.png';
 import marvel from '@/app/assets/images/marvel.png';
 import { Issue } from '@/app/components';
+import db from '@/lib/db';
+import { isDateInCurrentWeek } from '@/lib/functions';
 import { DropdownMenu, Flex, Text, Tooltip } from '@radix-ui/themes';
-import { ArrowDownAZ, ChevronRight, ChevronsDown, Sliders } from 'lucide-react';
+import { ChevronRight, ChevronsDown, Sliders } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Home() {
+export default async function Home() {
+  const issues = await db.issue.findMany({
+    take: 30,
+  });
+
+  const newThisWeek = issues.filter((issue) =>
+    isDateInCurrentWeek(issue.dateCreated),
+  );
+  const others = issues.filter(
+    (issue) => !isDateInCurrentWeek(issue.dateCreated),
+  );
+
   return (
     <Flex
       direction="column"
@@ -80,7 +93,7 @@ export default function Home() {
               </DropdownMenu.Content>
             </DropdownMenu.Root>
           </Tooltip>
-          <Tooltip content="Sort">
+          {/* <Tooltip content="Sort">
             <DropdownMenu.Root>
               <DropdownMenu.Trigger>
                 <button className="bg-zinc-100 shadow-sm border-[1px] border-solid border-zinc-200 px-2 py-2 rounded-md text-zinc-600">
@@ -91,7 +104,7 @@ export default function Home() {
                 todo
               </DropdownMenu.Content>
             </DropdownMenu.Root>
-          </Tooltip>
+          </Tooltip> */}
           <Tooltip content="My Pulls">
             <button className="bg-zinc-100 shadow-sm border-[1px] border-solid border-zinc-200 px-2 py-2 rounded-md text-zinc-600">
               <Link href="/my-pulls">
@@ -123,9 +136,8 @@ export default function Home() {
               className="overflow-x-scroll space-y-6 h-full md:space-y-0 lg:space-y-0 md:h-80 lg:h-80 flex flex-wrap items-start w-full md:flex-row lg:flex-row md:items-center lg:items-center md:w-full lg:w-full"
               gap="3"
             >
-              {new Array(5).fill(0).map((v, idx) => (
-                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                <Issue key={idx} issue={{ title: 'Absolute Superman' }} />
+              {newThisWeek.map((v) => (
+                <Issue key={v.id} issue={v} />
               ))}
             </Flex>
           </Flex>

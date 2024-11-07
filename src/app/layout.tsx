@@ -1,4 +1,4 @@
-import { SearchButton, UserButton } from '@/app/components';
+import { Banner, SearchButton, UserButton } from '@/app/components';
 import {
   Button,
   Dialog,
@@ -13,6 +13,7 @@ import { DownloadCloud, Megaphone } from 'lucide-react';
 import type { Metadata } from 'next';
 import { Bricolage_Grotesque } from 'next/font/google';
 import local from 'next/font/local';
+import { Toaster } from 'react-hot-toast';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -41,6 +42,7 @@ export default function RootLayout({
       >
         <Theme accentColor="gray" className="font-bricolage outline-none">
           {/* page header */}
+          <Banner />
           <Flex
             className="px-3 py-3 bg-white fixed top-0 left-0 w-full border-b-solid border-b-[1px] border-b-zinc-200"
             align="center"
@@ -96,6 +98,7 @@ export default function RootLayout({
             </Flex>
           </Flex>
           <Flex className="bg-zinc-50/60">{children}</Flex>
+          <Toaster position="bottom-center" />
         </Theme>
       </body>
     </html>

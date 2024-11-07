@@ -1,27 +1,42 @@
 'use client';
+import google from '@/app/assets/images/google.png';
 import { authClient } from '@/lib/auth-client';
 import { Button, Flex, Text, TextField } from '@radix-ui/themes';
+import Image from 'next/image';
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
+
+type SignupError = {
+  field: 'email' | 'password';
+  message: string;
+};
 
 export default function Page() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const signUp = async () => {
-    const { data, error } = await authClient.signUp.email(
+  const signUp = async () =>
+    await authClient.signUp.email(
       {
         email,
         password,
         name: email.split('@')[0],
       },
       {
+        onRequest: () => {
+          setIsLoading(true);
+        },
         onSuccess: (ctx) => {
+          setIsLoading(false);
           console.log('sign up success');
+        },
+        onError: (ctx) => {
+          setIsLoading(false);
+          toast.error(ctx.error.message || ctx.error.statusText);
         },
       },
     );
-    console.log({ data, error });
-  };
 
   return (
     <Flex className="w-full h-screen px-3" align="center" justify="center">
@@ -68,17 +83,19 @@ export default function Page() {
             />
           </Flex>
           <Button
+            loading={isLoading}
             onClick={signUp}
             className="w-full cursor-pointer"
             variant="surface"
             size="3"
+            type="submit"
           >
             <Flex align="center" justify="center">
               <Text>Create Account</Text>
             </Flex>
           </Button>
         </Flex>
-        <div className="w-full p-[.5px] bg-zinc-300 rounded-full" />
+        <div className="w-full p-[.5px] bg-zinc-100 rounded-full" />
         <Flex
           flexGrow="1"
           gap="3"
@@ -86,10 +103,9 @@ export default function Page() {
           align="center"
           justify="center"
         >
-          <Text>Or</Text>
           <Flex align="center" justify="center" gap="4" width="100%">
-            <button className="px-4 py-2.5 bg-zinc-50 rounded-full border-[1px] border-zinc-100 border-solid">
-              G
+            <button className="px-2.5 py-2.5 bg-zinc-50 rounded-full border-[1px] border-zinc-100 border-solid">
+              <Image alt="google_logo" src={google} width={20} height={20} />
             </button>
           </Flex>
         </Flex>

@@ -27,7 +27,7 @@ export default function SearchButton() {
           width: isExpanded ? '100%' : '0%',
         }}
         className="bg-transparent text-[0.8rem] outline-none px-2.5 py-[1px] rounded-full"
-        placeholder="Find A Comics,Collections, Writers, Artists and More"
+        placeholder="Find Comics, Collections, Writers, Artists and More"
       />
       <motion.button
         initial={{ display: 'nonw', width: '0%' }}

@@ -57,3 +57,28 @@ model Verification {
 
   @@index([identifier])
 }
+
+model Issue{
+  id String @id @default(uuid())
+
+  collectionId String?
+  collection Collection? @relation(fields: [collectionId],references: [id])
+
+  name String
+  thumbnailUrl String
+  downloadUrl String
+
+  dateCreated DateTime @default(now())
+  dateUpdated DateTime @default(now())
+
+}
+
+model Collection{
+  id String @id @default(uuid())
+
+  name String
+  issues Issue[]
+
+  dateCreated DateTime @default(now())
+  dateUpdated DateTime @default(now())
+}

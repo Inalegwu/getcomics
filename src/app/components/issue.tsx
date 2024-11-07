@@ -1,11 +1,11 @@
+'use client';
 import absolute from '@/app/assets/images/a0001_absolute-superman_cover52.jpg';
+import type { Issue as DBIssue } from '@prisma/client';
 import { Flex, Text } from '@radix-ui/themes';
 import Image from 'next/image';
 
 type Props = {
-  issue: {
-    title: string;
-  };
+  issue: DBIssue;
 };
 
 export default function Issue({ issue }: Props) {
@@ -23,7 +23,7 @@ export default function Issue({ issue }: Props) {
         className="border-[1px] border-zinc-200 border-solid rounded-md w-full h-full"
       />
       <Flex direction="column" className="cursor-pointer">
-        <Text size="2">{issue.title}</Text>
+        <Text size="2">{issue.name}</Text>
         <Text size="1" color="gray">
           3 hours ago
         </Text>
