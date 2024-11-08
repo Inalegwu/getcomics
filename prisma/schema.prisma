@@ -38,7 +38,7 @@ model Account {
   userId       String @unique
   accountId    String
   providerId   String
-  accessToken  String
+  accessToken  String?
   refreshToken String?
   expiresAt    DateTime?
   password     String?
@@ -70,7 +70,7 @@ model Issue{
 
   dateCreated DateTime @default(now())
   dateUpdated DateTime @default(now())
-
+  dateReleased DateTime
 }
 
 model Collection{

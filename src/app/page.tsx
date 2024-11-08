@@ -2,24 +2,19 @@ import cowboy from '@/app/assets/images/381166574_11479456.png';
 import image from '@/app/assets/images/cdnlogo.com_image-comics.svg';
 import dc from '@/app/assets/images/dc.png';
 import marvel from '@/app/assets/images/marvel.png';
-import { Issue } from '@/app/components';
 import db from '@/lib/db';
 import { isDateInCurrentWeek } from '@/lib/functions';
 import { DropdownMenu, Flex, Text, Tooltip } from '@radix-ui/themes';
-import { ChevronRight, ChevronsDown, Sliders } from 'lucide-react';
+import { ChevronsDown, Sliders } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Issue, SectionList } from './components';
 
 export default async function Home() {
-  const issues = await db.issue.findMany({
-    take: 30,
-  });
+  const issues = await db.issue.findMany();
 
-  const newThisWeek = issues.filter((issue) =>
-    isDateInCurrentWeek(issue.dateCreated),
-  );
-  const others = issues.filter(
-    (issue) => !isDateInCurrentWeek(issue.dateCreated),
+  const newThisWeek = issues.filter(
+    (issue) => !isDateInCurrentWeek(issue.dateReleased),
   );
 
   return (
@@ -113,9 +108,9 @@ export default async function Home() {
             </button>
           </Tooltip>
         </Flex>
-        {/* new this week */}
         <Flex direction="column" className="px-3 py-[8rem]">
-          <Flex direction="column" gap="3">
+          {/* new this week */}
+          {/* <Flex direction="column" gap="3">
             <Flex align="center" justify="between">
               <Text size="7" weight="bold">
                 New This Week
@@ -136,11 +131,17 @@ export default async function Home() {
               className="overflow-x-scroll space-y-6 h-full md:space-y-0 lg:space-y-0 md:h-80 lg:h-80 flex flex-wrap items-start w-full md:flex-row lg:flex-row md:items-center lg:items-center md:w-full lg:w-full"
               gap="3"
             >
-              {newThisWeek.map((v) => (
-                <Issue key={v.id} issue={v} />
+              {newThisWeek.map((issue) => (
+                <Issue key={issue.id} issue={issue} />
               ))}
             </Flex>
-          </Flex>
+          </Flex> */}
+          <SectionList
+            title="New This Week"
+            path="/this-week"
+            data={newThisWeek}
+            renderItem={(item) => <Issue key={item.id} issue={item} />}
+          />
         </Flex>
       </Flex>
     </Flex>

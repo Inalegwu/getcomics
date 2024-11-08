@@ -10,7 +10,7 @@ export default function SearchButton() {
 
   return (
     <motion.div
-      initial={{ width: 'fit-content' }}
+      initial={false}
       className="bg-zinc-100 border-[1px] border-solid border-zinc-200 rounded-md flex flex-row items-center justify-center"
       animate={{ width: isExpanded ? '500px' : 'fit-content' }}
     >

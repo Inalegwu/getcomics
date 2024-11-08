@@ -1,5 +1,4 @@
 import dc from '@/app/assets/images/dc.png';
-import { Issue } from '@/app/components';
 import { Flex, Text } from '@radix-ui/themes';
 import Image from 'next/image';
 
@@ -45,12 +44,7 @@ export default async function Page({
         justify="start"
         gap="2"
         wrap="wrap"
-      >
-        {/* biome-ignore lint/suspicious/noArrayIndexKey: <explanation> */}
-        {new Array(10).fill(0).map((_, idx) => (
-          <Issue key={idx} issue={{ title: 'Absolute Superman' }} />
-        ))}
-      </Flex>
+      ></Flex>
     </Flex>
   );
 }
